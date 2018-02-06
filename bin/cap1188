@@ -1,0 +1,21 @@
+#!/usr/bin/env node
+
+const readline = require('readline');
+
+const connect = require('../').connect;
+
+let hasLogged = false;
+
+const logTouches = touches => {
+  const moveCursorY = hasLogged ? -1 : 0;
+  hasLogged = true;
+
+  readline.clearLine(process.stdout);
+  readline.moveCursor(process.stdout, -touches.length, moveCursorY);
+
+  console.log(touches.map(t => (t ? '🔵' : '🔴')).join(' '));
+};
+
+connect().then(cap1188 => {
+  setInterval(() => logTouches(cap1188.readTouches()), 100);
+});
