@@ -12,7 +12,19 @@ connectionPromise.then(cap1188 => {
     console.log(evt);
   });
 
-  cap1188.on("reset", function(evt) {
+  cap1188.on("touch", function(pin) {
+    console.log("pin touched: ", pin);
+  });
+
+  cap1188.on("release", function(pin) {
+    console.log("pin released: ", pin);
+  });
+
+  cap1188.on(2, function(touched) {
+    console.log("pin 2 is: ", touched ? "touched" : "released");
+  });
+
+  cap1188.on("reset", function() {
     console.log("reset");
   });
 
