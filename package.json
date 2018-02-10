@@ -1,6 +1,6 @@
 {
   "name": "raspi-cap",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Raspberry Pi / Node.js module for the CAP1188 capacitive touch breakout ",
   "main": "index.js",
   "bin": {
