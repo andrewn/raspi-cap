@@ -6,12 +6,15 @@ The CAP1188 is an 8-channel capacitive touch sensor and is available in a handy 
 
 You can wire this up as follows:
 
-| Device Pin | Pi                                                |
-| ---------- | ------------------------------------------------- |
-| 1 (GND)    | [Ground](https://pinout.xyz/pinout/ground)        |
-| 2 (VIN)    | [3.3v](https://pinout.xyz/pinout/pin1_3v3_power)  |
-| 3 (SDA)    | [BCM 2/SDA](https://pinout.xyz/pinout/pin3_gpio2) |
-| 4 (SCK)    | [BCM 3/SCL](https://pinout.xyz/pinout/pin5_gpio3) |
+| Device Pin | Pi                                                              |
+| ---------- | --------------------------------------------------------------- |
+| 1 (GND)    | [Ground](https://pinout.xyz/pinout/ground)                      |
+| 2 (VIN)    | [3.3v](https://pinout.xyz/pinout/pin1_3v3_power)                |
+| 3 (SDA)    | [BCM 2/SDA](https://pinout.xyz/pinout/pin3_gpio2)               |
+| 4 (SCK)    | [BCM 3/SCL](https://pinout.xyz/pinout/pin5_gpio3)               |
+| RST        | [BCM 17 (0)](https://pinout.xyz/pinout/pin11_gpio17) Optional\* |
+
+* Any GPIO pin can be used, see [Reset]() below.
 
 ## Install
 
@@ -49,6 +52,21 @@ connect().then(cap1188 => {
 ```
 
 See the [`examples`](./examples) directory for more examples.
+
+### Reset
+
+Optionally, you can connect the reset pin on the board (marked RST), to a pin on the Pi. Call the `reset()` method to reinitialize the sensor which can recalibrate it instead of having to cycle the power. A Promise is returned that resolves when the board has been reset.
+
+See [this page about how to specify a pin](https://github.com/nebrius/raspi-gpio#pin-naming).
+
+In addition, the `reset` event is also emitted.
+
+```
+var cap = require("CAP1188").connect(I2C1, { resetPin: 0 }); // using WiringPi number for BCM17
+cap.reset(function () {
+  // the board has been reset
+});
+```
 
 ## GUI
 

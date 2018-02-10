@@ -1,8 +1,7 @@
 {
   "name": "raspi-cap",
   "version": "0.0.2",
-  "description":
-    "Raspberry Pi / Node.js module for the CAP1188 capacitive touch breakout ",
+  "description": "Raspberry Pi / Node.js module for the CAP1188 capacitive touch breakout ",
   "main": "index.js",
   "bin": {
     "raspi-cap-debug": "./bin/cap1188"
@@ -14,12 +13,19 @@
   "bugs": {
     "url": "https://github.com/andrewn/raspi-cap/issues"
   },
-  "os": ["linux"],
-  "keywords": ["raspberry pi", "cap1188", "touch"],
+  "os": [
+    "linux"
+  ],
+  "keywords": [
+    "raspberry pi",
+    "cap1188",
+    "touch"
+  ],
   "author": "Andrew Nicolaou <me@andrewnicolaou.co.uk>",
   "license": "Apache-2.0",
   "dependencies": {
     "raspi": "^5.0.2",
+    "raspi-gpio": "^5.0.0",
     "raspi-i2c": "^6.1.0"
   }
 }
